@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cultivo"
+    tools:context=".view.fragment.valuesFragments.MoistureFragment">
+
+    <TextView
+        android:id="@+id/tvValues"
+        android:layout_width="200dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="90sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvMeasure"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoistureTittle" />
+
+    <TextView
+        android:id="@+id/tvMeasure"
+        android:layout_width="120dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="32dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoistureTittle" />
+
+    <ImageView
+        android:id="@+id/imSem"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="110dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvValues"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvMoistureTittle"
+        android:layout_width="347dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="32dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvValues"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

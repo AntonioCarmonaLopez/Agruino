@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Agruino</string>
+    <string name="action_settings">Configuración</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="username">Usuario</string>
+    <string name="pass">Contraseña</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="obligatory">Campo obligatorio</string>
+    <string name="title_activity_moisture">MoistureActivity</string>
+    <string name="moisture">Humedad</string>
+    <string name="upempty">Usuario y Contraseña vacios</string>
+    <string name="uempty">Usuario obliagatorio</string>
+    <string name="pempty">Contraseña obligatoria</string>
+    <string name="loginko">Login incorrecto</string>
+    <string name="alert">Alerta</string>
+    <string name="exit">Salir</string>
+    <string name="conf_exit">La app va a cerrarse</string>
+    <string name="stat">Estadísticas</string>
+    <string name="temperature">Temperatura</string>
+    <string name="current">Valor Actual</string>
+    <string name="avg">Valor Medio</string>
+    <string name="date">Date</string>
+    <string name="log">Datos historicos</string>
+    <string name="filter">filtrar</string>
+    <string name="time">Hora</string>
+    <string name="filterFrafment">Filtrar datos históricos</string>
+    <string name="twentyfour">24 PM</string>
+    <string name="twelve">12 AM</string>
+    <string name="seven">7 AM</string>
+</resources>

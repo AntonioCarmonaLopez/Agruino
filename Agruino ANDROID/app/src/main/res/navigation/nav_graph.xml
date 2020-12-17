@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.dam.agruino.view.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_statFragment"
+            app:destination="@id/statFragment"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_mainFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.dam.agruino.view.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_keysFragment"
+            app:destination="@id/keysFragment" />
+        <action
+            android:id="@+id/action_loginFragment_self"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/keysFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.KeysFragment"
+        android:label="fragment_keys"
+        tools:layout="@layout/fragment_keys">
+        <action
+            android:id="@+id/action_keysFragment_to_moistureFragment"
+            app:destination="@id/moistureFragment" />
+        <action
+            android:id="@+id/action_keysFragment_to_waterFragment"
+            app:destination="@id/waterFragment" />
+        <action
+            android:id="@+id/action_keysFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moistureFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.MoistureFragment"
+        android:label="fragment_moisture"
+        tools:layout="@layout/fragment_moisture" />
+    <fragment
+        android:id="@+id/waterFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.WaterFragment"
+        android:label="fragment_water"
+        tools:layout="@layout/fragment_water" >
+        <action
+            android:id="@+id/action_waterFragment_to_waterValuesFragment"
+            app:destination="@id/waterValuesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/waterValuesFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.waterValues.WaterValuesFragment"
+        android:label="fragment_water_values"
+        tools:layout="@layout/fragment_water_values" />
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.dam.agruino.view.fragment.StatsFragment"
+        android:label="fragment_stat"
+        tools:layout="@layout/fragment_stats" >
+        <action
+            android:id="@+id/action_statsFragment_to_statFragment"
+            app:destination="@id/statFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.StatFragment"
+        android:label="fragment_stat"
+        tools:layout="@layout/fragment_stat" >
+        <action
+            android:id="@+id/action_statFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.dam.agruino.view.fragment.valuesFragments.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment><action android:id="@+id/action_global_filterFragment" app:destination="@id/filterFragment"/>
+</navigation>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Agruino</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="obligatory">This field are required</string>
+    <string name="title_activity_moisture">MoistureActivity</string>
+
+    <string name="moisture">Moisture</string>
+    <string name="upempty">Username and Password are required</string>
+    <string name="uempty">Username is required</string>
+    <string name="pempty">Password is required</string>
+    <string name="loginko">Login unsuccessful</string>
+    <string name="alert">Alert</string>
+    <string name="exit">Exit</string>
+    <string name="conf_exit">The App will be closed</string>
+    <string name="stat">Stats</string>
+    <string name="temperature">Temperature</string>
+    <string name="current">Current Value</string>
+    <string name="avg">Current AVG Value</string>
+    <string name="date">Date</string>
+    <string name="log">Historical Values</string>
+    <string name="filter">Filter</string>
+    <string name="time">Time</string>
+    <string name="filterFrafment">Filter historical values</string>
+    <string name="twentyfour">24 PM</string>
+    <string name="twelve">12 AM</string>
+    <string name="seven">7 AM</string>
+</resources>

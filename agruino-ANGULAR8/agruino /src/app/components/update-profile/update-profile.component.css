@@ -1,0 +1,33 @@
+img {
+  margin-left: -20%;
+  border-style: none;
+  width: 50%;
+}
+
+.text{
+  color:white;
+  width: 130%;
+}
+.text>pre{
+  color:white;
+  margin-top: -10%;
+  margin-left: 36%;
+}
+.btb{
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 0;
+  background: #15CD72;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+.btb[disabled]{
+  background:#e7faf0;
+}
+#checkSelect,#checkEmail,#checkPass,#checkRePass{
+  display: flex;
+  flex-basis: auto;
+}

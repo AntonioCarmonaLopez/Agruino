@@ -1,0 +1,15 @@
+
+<div>
+  <div class="logo">
+    <img alt=”logo-agruino” src="assets/img/logo.png"/>
+  </div>
+  <div class="translate">
+    <div class="position">
+      <button class="btnSpace" (click)="useLanguage('en')" ><img src="assets/img/en.jpg"/></button>
+      <button class="btnSpace" (click)="useLanguage('es')"><img src="assets/img/es.jpg"/></button>
+      <!--could add german option but I don't want do it-->
+      <button class="btnSpace" (click)="authService.signOut()" >{{ 'agruino.logout' | translate }}</button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

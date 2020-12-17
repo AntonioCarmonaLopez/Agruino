@@ -1,0 +1,41 @@
+    <ul *ngFor="let value of values" class="collection with-header">  
+        <div *ngIf="value?.temp <= 0">
+          <div class="temp fixed">
+            <li class="list-group-item"><i class="alert alert-danger">{{ 'agruino.temp' | translate }}:{{value.temp}} C&#186;</i>===> <i class="alert alert-danger">{{ 'agruino.frozen' | translate }}</i></li>
+            <meter class="meter meter_meterRed" min="-58" max="125" value="{{value.temp}}">{{value.temp}}</meter>
+            <br><input type="button" class="btb" value="{{ 'agruino.hidete' | translate}}" (click)="ocultar('temp')">
+          </div>
+          <br><input type="button" class="tempcenter btb" hidden value="{{ 'agruino.showte' | translate}}" (click)="mostrar('temp')">
+        </div>
+      <div *ngIf="value?.temp > 0 && value?.temp <=10">
+        <div class="temp fixed">
+          <li class="list-group-item"><i class="alert alert-warning">{{ 'agruino.temp' | translate }}: {{value.temp}} C&#186;</i>===> <i class="alert alert-warning">{{ 'agruino.frost' | translate }}</i></li>
+          <meter class="meter meter_meterOrange" min="-58" max="125" value="{{value.temp}}">{{value.temp}}</meter>
+          <br><input type="button" class="btb" value="{{'agruino.hidete' | translate}}" (click)="ocultar('temp')">
+        </div>
+        <input type="button" class="tempcenter btb" hidden value="{{ 'agruino.showte' | translate}}" (click)="mostrar('temp')">
+      </div>
+      <div *ngIf="value?.temp > 10 && value?.temp <=20">
+        <div class="temp fixed">
+          <li class="list-group-item"><i class="alert alert-success">{{ 'agruino.temp' | translate }}: {{value.temp}} C&#186;</i>===> <i class="alert alert-success">{{ 'agruino.oktemp' | translate }}</i></li>
+          <meter class="meter meter_meterGreen" min="-58" max="125" value="{{value.temp}}">{{value.temp}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidete' | translate}}" (click)="ocultar('temp')">
+        </div>
+        <br><input type="button" class="tempcenter btb" hidden value="{{'agruino.showte' | translate}}" (click)="mostrar('temp')">
+      </div>
+      <div *ngIf="value?.temp > 20 && value?.temp <=25">
+        <div class="temp fixed">
+          <li class="list-group-item"><i class="alert alert-warning">{{ 'agruino.temp' | translate }}: {{value.temp}} C&#186;</i>===> <i class="alert alert-warning">{{ 'agruino.hot' | translate }}</i></li>
+          <meter class="meter meter_meterOrange" min="-58" max="125" value="{{value.temp}}">{{value.temp}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidete' | translate}}" (click)="ocultar('temp')">
+        </div>
+        <br><input type="button" class="tempcenter btb" hidden value="{{ 'agruino.showte' | translate}}" (click)="mostrar('temp')">
+      </div>
+      <div *ngIf="value?.temp > 25">
+        <div class="temp fixed">
+          <li class="list-group-item"><i class="alert alert-danger">{{ 'agruino.temp' | translate }}: {{value.temp}} C&#186;</i>===> <i class="alert alert-danger">{{ 'agruino.sohot' | translate }}</i></li>
+          <meter class="meter meter_meterRed" min="-58" max="125" value="{{value.temp}}">{{value.temp}}</meter>
+          <br><input class="btb" type="button" value="{{ 'agruino.hidete' | translate}}" (click)="ocultar('temp')">
+        </div>
+        <br><input type="button" class="tempcenter btb" hidden value="{{ 'agruino.showte' | translate}}" (click)="mostrar('temp')">
+

@@ -1,0 +1,35 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="px-logo">
+        <img src="../../../assets/img/1.jpg" alt="Agruino - Smart Framing">
+        <div class="text">
+          <pre>Agruino - Smart Framing</pre>
+        </div>
+    </div>
+    <div class="authBlock">
+        <h3>{{ 'agruino.updateProfile' | translate }}</h3>
+        <div class="form-group">
+          <label for="profile">{{ 'agruino.profile' | translate }}</label>
+          <div id="checkSelect">
+            <select class="browser-default custom-select" [(ngModel)]="selected" #userProfile  name="status" id="select"  (focusout)="onOptionsSelected()" required>
+              <option *ngFor="let value of profiles" [ngValue]="value.profile" class="collection with-header">
+                {{value.profile}}
+              </option>
+            </select>
+            </div>
+        </div>
+        <div class="formGroup">
+            <div id="checkEmail"><input type="text" class="formControl" value="{{this.user.email}}" #userName id="email" required [ngModel]="userName.value" (ngModelChange)="email(userName.value)" (focusout)="emaillost(userName.value)"><div id="imgEmail"></div></div>
+        </div>
+        <div *ngIf="user.emailVerified;else other">
+          <label><input (change)="FieldsChange($event)" checked type="checkbox"/>{{ 'agruino.everified' | translate }}</label>
+        </div>
+        <ng-template #other>
+          <label><input (change)="FieldsChange($event)" type="checkbox"/>{{ 'agruino.everified' | translate }}</label>
+        </ng-template>
+        <div class="formGroup">
+          <input type="button"  class="btb" value="{{ 'agruino.ok' | translate }}" id="submit"  (click)="this.updateProfile(this.selected,userName.value)">
+        </div>
+    </div>
+  </div>
+</div>

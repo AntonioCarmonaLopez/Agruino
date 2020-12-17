@@ -1,0 +1,118 @@
+
+    <!-- Call nav component-->
+     <div id="big"><app-navbar-user></app-navbar-user></div>
+ <div id="small"><app-navbar-no-user></app-navbar-no-user></div>
+  <!-- Sidebar navigation -->
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="side" class="col-md-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <i class="fas fa-user"></i> {{ 'agruino.cPanel' | translate }}
+            </li><br>
+            <!--if name is Admin then show link for create a new user -->
+            <div *ngIf="authService.userData as user">
+              <div *ngIf="user?.displayName === 'Admin'">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['../register-user']">
+                    <i class="far fa-user"></i> {{ 'agruino.newuser' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['../users']">
+                    <i class="fa fa-user"></i> {{ 'agruino.users' | translate }}
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['../uprofile']">
+                    <i class="fa fa-user updateProfile"></i> {{ 'agruino.updateprofile' | translate }}
+                  </a>
+                </li>
+              </div>
+              <!-- Calling forgot-password component Api from AuthService -->
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['../forgot-password']">
+                <i class="far fa-chart-bar"></i> {{ 'agruino.forgot' | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['../values']">
+                <i class="far fa-chart-bar"></i> {{ 'agruino.values' | translate }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['../values-log']">
+                <i class="far fa-chart-bar"></i> {{ 'agruino.log-values' | translate }}
+              </a>
+            </li>
+            </div>
+
+        </ul>
+      </div>
+    </nav>
+    <!--vertical menu for small sizes-->
+    <nav id="sideSmall" class="nav nav-pills nav-fill">
+      <!--if name is Admin then show link for create a new user -->
+      <div *ngIf="authService.userData as user">
+        <div *ngIf="user?.displayName === 'Admin'" class="nav nav-pills nav-fill">
+          <a class="nav-item nav-link active" [routerLink]="['../register-user']">{{ 'agruino.newuser' | translate }}</a>
+          <a class="nav-item nav-link" [routerLink]="['../users']">{{ 'agruino.users' | translate }}</a>
+          <a class="nav-item nav-link" [routerLink]="['../uprofile']">{{ 'agruino.updateprofile' | translate }}</a>
+        </div>
+      </div>
+      <a class="nav-item nav-link" [routerLink]="['../values']">{{ 'agruino.values' | translate }}</a>
+      <a class="nav-item nav-link" [routerLink]="['../forgot-password']">{{ 'agruino.forgot' | translate }}</a>
+    </nav>
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="inner-adjust">
+        <div class="pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">{{ 'agruino.profile' | translate }}</h1>
+        </div>
+        <!-- Show user data when logged in -->
+        <div class="row" *ngIf="authService.userData as user">
+          <div class="col-md-12">
+            <div class="media">
+              <img class="align-self-start mr-5 img-thumbnail rounded-circle" name="photo" src="{{(user.photoURL) ? user.photoURL : '/assets/img/dummy-user.png'}}"
+                alt="{{user.displayName}}">
+                <!--<input type="url" id="url"  class="formControl inputPhoto" placeholder="{{ 'agruino.uploadphoto' | translate }}"><br>
+                <button class="button" (click)="updatePhoto()">{{ 'agruino.uploadphoto' | translate }}</button>-->
+                <!-- Upload image -->
+              <div class="media-body">
+                <h1>{{ 'agruino.hello' | translate }}: <strong>{{user.email}}</strong></h1><hr>
+                <p>User ID: <strong>{{user.uid}}</strong></p>
+                <div *ngIf="user?.displayName === 'Admin'">
+                  <p>Rol: <strong>{{ 'agruino.admin' | translate }}</strong></p>
+                </div>
+                <div *ngIf="user?.displayName !== 'Admin'">
+                  <p>Rol: <strong>{{ 'agruino.user' | translate }}</strong></p>
+                </div>
+                <p>{{ 'agruino.everified' | translate }} <strong>{{user.emailVerified}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <h5 class="centerTitle">{{ 'agruino.select' | translate }}</h5>
+        <input type="file" accept=".png, .jpg" (change)="uploadPhoto($event)">
+      </div>
+      <div class="progress">
+        <!--<div [style.visibility]="(uploadPercent === 0) ? 'hidden' : 'visible'"
+          role="progressbar" [style.width.%]="( | async) +'%'">
+          <div style="background-color: red;" [style.width.%]="progress$ | async"></div>
+        </div>-->
+        <div class="progress-bar progress-bar-striped bg-success" [style.width.%]="uploadPercent | async"></div>
+      </div>
+   <input #imageUser id="text" type="hidden" [value]="urlImage | async">
+   <button id="boton" *ngIf="urlImage | async; else btnDisabled" type="submit" class="btn btn-lg btn-primary btn-block" (click)="updatePhoto()">{{ 'agruino.uploadphoto' | translate }}</button>
+   <ng-template #btnDisabled>
+     <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">{{ 'agruino.uploadphoto' | translate }}</button>
+   </ng-template>
+    </main>
+  </div>
+</div>
+
+
+

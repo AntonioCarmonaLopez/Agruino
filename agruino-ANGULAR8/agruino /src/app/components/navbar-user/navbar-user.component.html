@@ -1,0 +1,10 @@
+<link href="https://fonts.googleapis.com/css?family=Orbitron:500&display=swap" rel="stylesheet">
+<!-- Top navigation -->
+<div *ngIf="authService.userData as user">
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <p class="navbar-brand col-sm-3 col-md-2 mr-0">
+      <img class="brand-logo" src="../../../assets/img/1.jpg" alt="Agruino - Smart Framing">
+      <span class="der">{{(user.email) ? user.email : 'User'}}</span>
+    </p>
+  </nav>
+</div>

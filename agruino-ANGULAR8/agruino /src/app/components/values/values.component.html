@@ -1,0 +1,42 @@
+ <!-- Call nav component-->
+ <div id="big"><app-navbar-user></app-navbar-user></div>
+ <div id="small"><app-navbar-no-user></app-navbar-no-user></div>
+ <!-- Sidebar navigation -->
+ <div class="container-fluid">
+  <div class="row">
+    <nav id="side" class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <i class="fas fa-user sidebarTittle"></i> {{ 'agruino.values' | translate }}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['../dashboard']">
+              <i class="far fa-chart-bar"></i> {{ 'agruino.home' | translate }}
+            </a>
+          </li>   
+      </ul>
+    </div>
+  </nav>
+         <!--vertical menu for small sizes-->
+    <nav id="sideSmall" class="nav nav-pills nav-fill">
+      <a class="nav-item nav-link active" [routerLink]="['../dashboard']">{{ 'agruino.home' | translate }}</a>
+    </nav>
+     <!-- Main content -->
+     <div role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+       <div class="inner-adjust">
+       <!-- Show values -->
+       <div *ngIf="values?.length > 0;else noValues">
+         <ul class="collection with-header">
+          <!--call components-->
+           <app-moisture></app-moisture>
+           <app-conductibity></app-conductibity>
+           <app-turbidity></app-turbidity>
+           <app-ph></app-ph>
+           <app-temp></app-temp> 
+         </ul>
+      </div>
+      <ng-template #noValues>
+        <h1 class="warn">Loading values ...</h1>
+      </ng-template>
+</div>

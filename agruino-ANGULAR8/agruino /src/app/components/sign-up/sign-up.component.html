@@ -1,0 +1,39 @@
+<app-navbar-no-user></app-navbar-no-user>
+<div id="shit"></div>
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="px-logo">
+        <div class="text">
+          <pre>Agruino - Smart Framing</pre>
+        </div>
+    </div>
+    <div class="authBlock">
+        <h3>{{ 'agruino.register' | translate }}</h3>
+        <div class="form-group">
+          <label for="profile">{{ 'agruino.profile' | translate }}</label>
+          <div id="checkSelect">
+            <select class="browser-default custom-select" [(ngModel)]="selected" #userProfile  name="status" id="select"  (focusout)="onOptionsSelected()" required>
+              <option *ngFor="let value of profiles" [ngValue]="value.profile" class="collection with-header">
+                {{value.profile}}
+              </option>
+            </select>
+            </div>
+        </div>
+        <div class="formGroup">
+            <div id="checkEmail"><input type="text" class="formControl" placeholder="{{ 'agruino.email' | translate }}" #userName id="email" required [ngModel]="userName.value" (ngModelChange)="email(userName.value)" (focusout)="emaillost(userName.value)"><div id="imgEmail"></div></div>
+        </div>
+        <div class="formGroup">
+            <div id="checkPass"><input type="password" class="formControl" placeholder="Password" id="pass" #userPwd required [ngModel]="userPwd.value" (ngModelChange)="pass(userPwd.value)" (focusout)="passlost(userPwd.value)"><div id="imgPass"></div></div>
+        </div>
+        <div class="formGroup">
+          <div id="checkRePass"><input disabled type="password" name="repassword" class="formControl" id="repass" placeholder="Repeat Password" #userRePwd required [ngModel]="userRePwd.value" (ngModelChange)="rePass(userPwd.value,userRePwd.value)" (focusout)="rePasslost(userPwd.value,userRePwd.value)"><div id="imgRePass"></div></div>
+        </div>
+        <div class="formGroup">
+          <input type="button" disabled class="btb" value="{{ 'agruino.ok' | translate }}" id="submit"  (keydown.enter)="authService.signUp(userName.value, userPwd.value, this.selected)" (click)="authService.signUp(userName.value, userPwd.value, this.selected)">
+        </div>
+    </div>
+    <div class="redirectToLogin">
+      <span>{{ 'agruino.already' | translate }} <span class="redirect" routerLink="/sign-in">{{ 'agruino.log-in' | translate }}</span></span>
+    </div>
+  </div>
+</div>

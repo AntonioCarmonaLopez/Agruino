@@ -1,0 +1,37 @@
+
+    <!-- Call nav component-->
+    <app-navbar-no-user></app-navbar-no-user>
+    <table class="ta table table-bordered">
+  <thead>
+    <tr>
+      <th>Rol</th>
+      <th>Email</th>
+      <th>{{'agruino.everified' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users;let indice=index">
+      <td><input type="text" disabled value="{{user.displayName}}"></td>
+      <td><input type="text" disabled value="{{user.email}}" id="email" #email></td>
+      <td><label *ngIf="user.emailVerified;else other"><input type="checkbox" checked disabled></label>
+        <span class="checkmark"></span>
+        <ng-template #other>
+          <label ><input type="checkbox" disabled></label>
+          <span class="checkmark"></span>
+        </ng-template></td>
+        <td> <button class="button-green button-email" [routerLink]="['../send-email',user.email ]">
+              <span style="font-size:12px" class="glyphicon glyphicon-envelope gi-2x"></span>
+             </button>
+             <!-- <button class="button-red" (click)=borrar(user.email)>
+              <span style="font-size:12px" class="glyphicon glyphicon-minus gi-2x"></span>
+             </button> -->
+        </td>
+    </tr>
+  </tbody>
+</table>
+<div id="butons">
+  <button class="button-green button-email" [routerLink]="['../send-email','all' ]">
+    <span style="font-size:12px" class="glyphicon glyphicon-envelope gi-2x"> {{'agruino.sendAll' | translate}}</span>
+  </button>
+  <input class="button-red button-back" type="button" value="{{'agruino.back' | translate}}" onclick="history.back()">
+</div>

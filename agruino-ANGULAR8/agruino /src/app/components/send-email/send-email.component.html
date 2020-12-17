@@ -1,0 +1,19 @@
+<br><br><br><br><div class="container mt-5">
+    <h2>{{ 'agruino.cForm' | translate }}</h2>
+    <form>
+        <div class="form-group">
+            <label>{{ 'agruino.subject' | translate }}</label>
+            <input type="text" class="formControl" #subject required [ngModel]="subject.value" name="subject" (ngModelChange)="subject(subject.value)" (focusout)="subjectlost(subject.value)">
+        </div>
+        <div class="form-group">
+            <label>{{ 'agruino.mail' | translate }}</label>
+            <input type="text" class="formControl" #mail disabled required value="{{ this.email }}" name="mail">
+        </div>
+        <div class="form-group">
+            <label>{{ 'agruino.msg' | translate }}</label>
+            <textarea class="form-control" cols="30" rows="6" #msg required [ngModel]="msg.value" name="msg" (ngModelChange)="msg(msg.value)" (focusout)="msglost(msg.value)"></textarea>
+        </div>
+        <input type="button" id="submit" class="btb green" value="{{ 'agruino.send' | translate }}" disabled (keydown.enter)="this.contactForm(subject.value, mail.value, msg.value)" (click)="this.contactForm(subject.value, mail.value, msg.value)">
+        <input class="btb red" type="button" value="{{'agruino.back' | translate}}" onclick="history.back()">    
+    </form>
+</div>

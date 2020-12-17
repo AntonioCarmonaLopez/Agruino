@@ -1,0 +1,25 @@
+    <ul *ngFor="let value of values" class="collection with-header">
+       <div *ngIf="value?.ph < 5.5">
+        <div class="ph fixed">
+          <li class="list-group-item"><i class="alert alert-danger">PH: {{value.ph}}</i>===> <i class="alert alert-danger"><p>{{ 'agruino.acid' | translate }}</p></i></li>
+          <meter class="meter meter_meterRed" min="0.0" max="14.0" value="{{value.ph}}">{{value.ph}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidep' | translate}}" (click)="ocultar('ph')">
+        </div>
+        <br><input type="button" class="phcenter btb" hidden value="{{ 'agruino.showp' | translate}}" (click)="mostrar('ph')">
+      </div>
+      <div *ngIf="value?.ph >= 5.5 && value?.ph <= 7">
+        <div class="ph fixed">
+          <li class="list-group-item"><i class="alert alert-success">PH: {{value.ph}}</i>===> <i class="alert alert-success">{{ 'agruino.okph' | translate }}</i></li>
+          <meter class="meter meter_meterGreen" min="0.0" max="14.0" value="{{value.ph}}">{{value.ph}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidep' | translate}}" (click)="ocultar('ph')">
+        </div>
+        <br><input type="button" class="phcenter btb" hidden value="{{ 'agruino.showp' | translate}}" (click)="mostrar('ph')">
+      </div>
+      <div *ngIf="value?.ph > 7">
+        <div class="ph fixed">
+          <li class="list-group-item"><i class="alert alert-danger">PH: {{value.ph}}</i>===> <i class="alert alert-danger">{{ 'agruino.basic' | translate }}</i></li>
+          <meter class="meter meter_meterRed" min="0.0" max="14.0" value="{{value.ph}}">{{value.ph}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidet' | translate}}" (click)="ocultar('ph')">
+        </div>
+        <br><input type="button" class="phcenter btb" hidden value="{{ 'agruino.showp' | translate}}" (click)="mostrar('ph')">
+

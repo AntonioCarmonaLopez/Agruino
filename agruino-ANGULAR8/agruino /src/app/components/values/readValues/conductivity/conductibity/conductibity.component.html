@@ -1,0 +1,25 @@
+    <ul *ngFor="let value of values" class="collection with-header">
+      <br><br><li class="list-group"><h4 class="centerTitle">{{ 'agruino.quality' | translate }}</h4></li>
+      <div *ngIf="value?.conductivity <= 1">
+        <div class="conductivity fixed">
+          <li class="list-group-item"><i class="alert alert-info">{{ 'agruino.conductivity' | translate }}: {{value.conductivity}} mS </i>===> <i class="alert alert-warning">{{ 'agruino.lowconductivity' | translate }}</i></li>
+          <meter class="meter meter_meterOrange" min="0.0" max="3.0" value="{{value.conductivity}}">{{value.conductivity}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidec' | translate}}" (click)="ocultar('conductivity')">
+        </div>
+        <br><input type="button" class="conductivitycenter btb" hidden value="{{ 'agruino.showc' | translate}}" (click)="mostrar('conductivity')">
+      </div>
+      <div *ngIf="value?.conductivity > 1 && value?.conductivity <= 2">
+        <div class="conductivity fixed">
+          <li class="list-group-item"><i class="alert alert-info">{{ 'agruino.conductivity' | translate }}: {{value.conductivity}} mS </i>===> <i class="alert alert-success">{{ 'agruino.okconductivity' | translate }}</i></li>
+          <meter class="meter meter_meterGreen" min="0.0" max="3.0" optimum="1.0" value="{{value.conductivity}}">{{value.conductivity}}</meter>
+          <br><input type="button" class="btb" value="{{'agruino.hidec' | translate}}" (click)="ocultar('conductivity')">
+        </div>
+        <br><input type="button" class="conductivitycenter btb" hidden value="{{ 'agruino.showc' | translate}}" (click)="mostrar('conductivity')">
+      </div>
+      <div *ngIf="value?.conductivity > 2">
+        <div class="conductivity fixed">
+          <li class="list-group-item"><i class="alert alert-info">{{ 'agruino.conductivity' | translate }}: {{value.conductivity}} mS </i>===> <i class="alert alert-danger">{{ 'agruino.highconductivity' | translate }}</i></li>
+          <meter class="meter meter_meterRed" min="0.0" max="3.0" value="{{value.conductivity}}">{{value.conductivity}}</meter>
+          <br><input type="button" class="btb" value="{{'agruino.hidec' | translate}}" (click)="ocultar('conductivity')">
+        </div>
+        <br><input type="button" class="conductivitycenter btb" hidden value="{{ 'agruino.showc' | translate}}" (click)="mostrar('conductivity')">

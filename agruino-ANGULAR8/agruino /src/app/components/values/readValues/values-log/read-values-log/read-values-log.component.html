@@ -1,0 +1,268 @@
+<!--avg values-->
+<div>
+  <table class="table table-striped">
+    <h2>{{ 'agruino.avg' | translate }}</h2>
+    <div *ngFor="let valueHistory of valuesHistory">
+      <thead>
+        <tr>
+          <td>{{ 'agruino.mois' | translate }}</td>
+          <td>{{ 'agruino.tur' | translate }}</td>
+          <td>{{ 'agruino.con' | translate }}</td>
+          <td>PH</td>
+          <td>{{ 'agruino.tmp' | translate }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ (valueHistory.moisture / calcDay()).toFixed(2) }} %</td>
+          <td>{{ (valueHistory.turbidity / calcDay()).toFixed(2) }} MTU</td>
+          <td>{{ (valueHistory.conductivity / calcDay()).toFixed(2) }} MS</td>
+          <td>{{ (valueHistory.ph / calcDay()).toFixed(2) }}</td>
+          <td>{{ (valueHistory.temp / calcDay()).toFixed(2) }} MTU</td>
+        </tr>
+      </tbody>
+    </div>
+  </table>
+</div>
+<!-- filter nav -->
+<div id="filter">
+  <div id="butons" *ngFor="let value of valuesArray">
+    <button (click)="valuesFilter($event, value)" model="valueModel">
+      {{ value }}
+    </button>
+  </div>
+  <div id="datePicker">
+    <p class="tittle">{{ 'agruino.date' | translate }}</p>
+    <input
+      type="date"
+      id="date"
+      step="1"
+      min="2013-01-01"
+      max="2025-12-31"
+      value="1970-01-01"
+    />
+    <button id="submit" (click)="getDate()">{{ 'agruino.submit' | translate }}</button>
+  </div>
+</div>
+<div id="main">
+  <div id="first">
+    <div *ngIf="modeAll; else other">
+      <div class="flex">
+        <table class="table table-striped">
+          <h2 class="tittle">{{ 'agruino.historicalMoisture' | translate }}</h2>
+          <ul *ngFor="let valueLog of valuesLog">
+            <div *ngIf="valueLog.date >= getDate()">
+              <thead>
+                <tr>
+                  <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ valueLog.moisture }} %</td>
+                  <td>{{ valueLog.dateString }}</td>
+                  <td>{{ valueLog.time }}</td>
+                </tr>
+              </tbody>
+            </div>
+          </ul>
+        </table>
+        <table class="table table-striped">
+          <h2 class="tittle">{{ 'agruino.historicalConductivity' | translate }}</h2>
+          <ul *ngFor="let valueLog of valuesLog">
+            <div *ngIf="valueLog.date >= getDate()">
+              <thead>
+                <tr>
+                  <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ valueLog.conductivity }} MS</td>
+                  <td>{{ valueLog.dateString }}</td>
+                  <td>{{ valueLog.time }}</td>
+                </tr>
+              </tbody>
+            </div>
+          </ul>
+        </table>
+      </div>
+      <div class="flex2">
+        <table class="table table-striped">
+          <h2 class="tittle">{{ 'agruino.historicalTurbidity' | translate }}</h2>
+          <ul *ngFor="let valueLog of valuesLog">
+            <div *ngIf="valueLog.date >= getDate()">
+              <thead>
+                <tr>
+                  <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ valueLog.turbidity }} MTU</td>
+                  <td>{{ valueLog.dateString }}</td>
+                  <td>{{ valueLog.time }}</td>
+                </tr>
+              </tbody>
+            </div>
+          </ul>
+        </table>
+        <table class="table table-striped">
+          <h2 class="tittle">{{ 'agruino.historicalPH' | translate }}</h2>
+          <ul *ngFor="let valueLog of valuesLog">
+            <div *ngIf="valueLog.date >= getDate()">
+              <thead>
+                <tr>
+                  <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ valueLog.ph }}</td>
+                  <td>{{ valueLog.dateString }}</td>
+                  <td>{{ valueLog.time }}</td>
+                </tr>
+              </tbody>
+            </div>
+          </ul>
+        </table>
+      </div>
+      <div class="flex3">
+        <table class="table table-striped">
+          <h2 class="tittle">{{ 'agruino.historicalTemp' | translate }}</h2>
+          <ul *ngFor="let valueLog of valuesLog">
+            <div *ngIf="valueLog.date >= getDate()">
+              <thead>
+                <tr>
+                  <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ valueLog.temp }} º</td>
+                  <td>{{ valueLog.dateString }}</td>
+                  <td>{{ valueLog.time }}</td>
+                </tr>
+              </tbody>
+            </div>
+          </ul>
+        </table>
+      </div>
+    </div>
+    <ng-template #other>
+      <table class="table table-striped">
+        <h2 class="tittle">Historical {{ value }} values</h2>
+        <ul *ngFor="let valueLog of valuesLog">
+          <div *ngIf="valueLog.date >= getDate()">
+            <thead>
+              <tr>
+                <th>{{ 'agruino.value' | translate }}</th>
+                  <th>{{ 'agruino.date' | translate }}</th>
+                  <th>{{ 'agruino.time' | translate  }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ valueLog[value] }}</td>
+                <td>{{ valueLog.dateString }}</td>
+                <td>{{ valueLog.time }}</td>
+              </tr>
+            </tbody>
+          </div>
+        </ul>
+      </table>
+    </ng-template>
+  </div>
+  <div id="second">
+    <div>
+      <table class="table table-striped">
+        <h2 class="tittle">{{ 'agruino.currentMoisture' | translate }}</h2>
+        <ul *ngFor="let value of values">
+          <thead>
+          <tr>
+            <th>{{ 'agruino.value' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ value.moisture }} %</td>
+          </tr>
+        </tbody>
+        </ul>
+      </table>
+      <table class="table table-striped">
+        <h2 class="tittle">{{ 'agruino.currentConductibity' | translate }}</h2>
+        <ul *ngFor="let value of values">
+          <thead>
+          <tr>
+            <td>{{ 'agruino.value' | translate }}</td>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>{{ value.conductivity }} MS</td>
+          </tr>
+        </tbody>
+        </ul>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <h2 class="tittle">{{ 'agruino.currentTurbidity' | translate }}</h2>
+        <ul *ngFor="let value of values">
+          <thead>
+          <tr>
+            <td>{{ 'agruino.value' | translate }}</td>
+          </tr>
+          <tbody>
+          <tr>
+            <td>{{ value.turbidity }} MTU</td>
+          </tr>
+        </tbody>
+        </ul>
+      </table>
+
+      <table class="table table-striped">
+        <h2 class="tittle">{{ 'agruino.currentPH' | translate }}</h2>
+        <ul *ngFor="let value of values">
+          <thead>
+          <tr>
+            <td>{{ 'agruino.value' | translate }}</td>
+          </tr>
+        </thead>
+          <tbody>
+          <tr>
+            <td>{{ value.ph }}</td>
+          </tr>
+        </tbody>
+        </ul>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <h2 class="tittle">{{ 'agruino.currentTemp' | translate }}</h2>
+        <ul *ngFor="let value of values">
+          <thead>
+          <tr>
+            <td>{{ 'agruino.value' | translate }}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ value.temp }} º</td>
+          </tr>
+        </tbody>
+        </ul>
+      </table>
+    </div>
+  </div>
+</div>

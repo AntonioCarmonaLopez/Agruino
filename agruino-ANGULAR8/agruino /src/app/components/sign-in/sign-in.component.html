@@ -1,0 +1,28 @@
+<app-navbar-no-user></app-navbar-no-user><br>
+<div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="px-logo">
+        <div class="text">
+          <pre>Agruino - Smart Framing</pre>
+        </div>
+    </div>
+
+    <div class="authBlock">
+      <h3>{{ 'agruino.log-in' | translate }}</h3>
+      <div class="formGroup">
+        <div id="checkEmail"><input type="text" class="formControl" placeholder="{{ 'agruino.email' | translate }}" #userName id="email" required [ngModel]="userName.value" (ngModelChange)="email(userName.value)" (focusout)="emaillost(userName.value)"><div id="imgEmail"></div></div>
+      </div>
+
+      <div class="formGroup">
+        <div id="checkPass"><input type="password" class="formControl" placeholder="Password" id="pass" #userPwd required [ngModel]="userPwd.value" (ngModelChange)="pass(userPwd.value)" (focusout)="passlost(userPwd.value)"><div id="imgPass"></div></div>
+      </div>
+
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input type="button" class="btb" value="{{ 'agruino.ok' | translate }}" id="submit" disabled (keydown.enter)="authService.signIn(userName.value, userPwd.value)" (click)="authService.signIn(userName.value, userPwd.value)">
+      </div>
+    </div>
+
+  </div>
+</div>

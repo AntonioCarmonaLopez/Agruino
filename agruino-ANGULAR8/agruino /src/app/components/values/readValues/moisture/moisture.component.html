@@ -1,0 +1,28 @@
+    <ul *ngFor="let value of values" class="collection with-header">
+      <li class="list-group"><h4 class="centerTitle">{{ 'agruino.gvalues' | translate }}</h4></li><br>
+      <div *ngIf="value?.moisture <= 40 && value?.conductivity <= 2 && value?.turbidity <= 3 && (value?.ph >= 5.5 && value?.ph <= 7) && (value?.temp >= 0 && value?.temp <= 25);else irrigationOff">
+        <div class="moisture fixed">
+          <li class="list-group-item"><i class="alert alert-danger">{{ 'agruino.moisture' | translate }}: {{value.moisture}} % </i>===> <i class="alert alert-success">{{ 'agruino.irrigation' | translate }}: ON</i></li>
+          <meter class="meter meter_meterRed" min="0" max="100" value="{{value.moisture}}">{{value.moisture}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidem' | translate}}" (click)="ocultar('moisture')">
+        </div>
+        <br><input type="button" class="moisturecenter btb" hidden value="{{ 'agruino.showm' | translate}}" (click)="mostrar('moisture')">
+      </div>
+      <ng-template #irrigationOff>
+        <div *ngIf="value?.conductivity <= 2 && value?.turbidity <= 3 && (value?.ph >= 5.5 && value?.ph <= 7) && (value?.temp >= 0 && value?.temp <= 25);else irrigationOff1">
+          <div class="moisture fixed">
+            <li class="list-group-item"><i class="alert alert-success">{{ 'agruino.moisture' | translate }}: {{value.moisture}} % </i>===> <i class="alert alert-danger">{{ 'agruino.irrigation' | translate }}: OFF</i></li>
+            <meter class="meter meter_meterGreen" min="0" max="100" value="{{value.moisture}}">{{value.moisture}}</meter>
+            <br><input type="button" class="btb" value="{{ 'agruino.hidem' | translate}}" (click)="ocultar('moisture')">
+          </div>
+          <br><input type="button" class="moisturecenter btb" hidden value="{{ 'agruino.showm' | translate}}" (click)="mostrar('moisture')">
+        </div>
+      <ng-template #irrigationOff1>
+        <div class="moisture fixed">
+          <li class="list-group-item"><i class="alert alert-success">{{ 'agruino.moisture' | translate }}: {{value.moisture}} % </i>===> <i class="alert alert-danger">{{ 'agruino.irrigation' | translate }}: OFF {{ 'agruino.bad' | translate }}</i></li>
+          <meter class="meter meter_meterRed" min="0" max="100" value="{{value.moisture}}">{{value.moisture}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidem' | translate}}" (click)="ocultar('moisture')">
+        </div>
+        <br><input type="button" class="moisturecenter btb" hidden value="{{ 'agruino.showm' | translate}}" (click)="mostrar('moisture')">
+      </ng-template>
+      </ng-template>

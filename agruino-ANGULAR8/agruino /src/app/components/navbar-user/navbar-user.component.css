@@ -1,0 +1,17 @@
+.nav-link{
+  margin-top: 17%;
+}
+.der{
+  margin-left: 220%;
+  top: 25%;
+  color: black;
+  position: absolute;
+}
+.fixed-top {
+  position: relative;
+  top: 5% ; 
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  border: solid #000;
+}

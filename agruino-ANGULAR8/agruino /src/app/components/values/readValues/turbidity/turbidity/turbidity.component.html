@@ -1,0 +1,24 @@
+    <ul *ngFor="let value of values" class="collection with-header">
+      <div *ngIf="value?.turbidity <= 1">
+        <div class="turbidity fixed" >
+          <li class="list-group-item"><i class="alert alert-info">{{ 'agruino.turbidity' | translate }}: {{value.turbidity}}  NTU  </i>===> <i class="alert alert-success">{{ 'agruino.okturbidity' | translate }}</i></li>
+          <meter class="meter meter_meterGreen" min="0.0" max="5.0" value="{{ value.turbidity}}">{{value.turbidity}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidet' | translate}}" (click)="ocultar('turbidity')">
+        </div>
+        <br><input type="button" class="turbiditycenter btb" hidden value="{{ 'agruino.showt' | translate}}" (click)="mostrar('turbidity')">
+      </div>
+      <div *ngIf="value?.turbidity > 1 && value?.turbidity <=3">
+        <div class="turbidity fixed">
+          <li class="list-group-item"><i class="alert alert-info">{{ 'agruino.turbidity' | translate }}: {{value.turbidity}}  NTU  </i>===> <i class="alert alert-warning">{{ 'agruino.okturbidity' | translate }}</i></li>
+          <meter class="meter meter_meterOrange" min="0.0" max="5.0" value="{{value.turbidity}}">{{value.turbidity}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidet' | translate}}" (click)="ocultar('turbidity')">
+        </div>
+        <br><input type="button" class="turbiditycenter btb" hidden value="{{ 'agruino.showt' | translate}}" (click)="mostrar('turbidity')">
+      </div>
+      <div *ngIf="value?.turbidity > 3">
+        <div class="fixed">
+          <li class="list-group-item"><i class="alert alert-danger">{{ 'agruino.turbidity' | translate }}: {{value.turbidity}}  NTU  </i>===> <i class="alert alert-danger">{{ 'agruino.koturbidity' | translate }}</i></li>
+          <meter class="meter meter_meterRed" min="0.0" max="5.0" value="{{value.turbidity}}">{{value.turbidity}}</meter>
+          <br><input type="button" class="btb" value="{{ 'agruino.hidet' | translate}}" (click)="ocultar('turbidity')">
+        </div>
+      <br><input type="button" class="turbiditycenter btb" hidden value="{{'agruino.showt' | translate}}" (click)="mostrar('turbidity')">
